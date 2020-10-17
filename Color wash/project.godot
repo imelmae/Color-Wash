@@ -21,8 +21,8 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=320
-window/size/height=180
+window/size/width=500
+window/size/height=260
 window/size/resizable=false
 window/size/test_width=1280
 window/size/test_height=720
@@ -46,6 +46,13 @@ shoot={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_3="hitbox"
+2d_physics/layer_4="hurtbox"
+2d_physics/layer_5="mob"
 
 [rendering]
 

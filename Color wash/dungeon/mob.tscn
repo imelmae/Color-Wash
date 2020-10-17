@@ -1,0 +1,69 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://dungeon/hurtbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://dungeon/minion1 Animations/RUN/Minion1-RUN2.png" type="Texture" id=2]
+[ext_resource path="res://dungeon/minion1 Animations/RUN/Minion1-RUN5.png" type="Texture" id=3]
+[ext_resource path="res://dungeon/minion1 Animations/RUN/Minion1-RUN1.png" type="Texture" id=4]
+[ext_resource path="res://dungeon/minion1 Animations/RUN/Minion1-RUN6.png" type="Texture" id=5]
+[ext_resource path="res://dungeon/minion1 Animations/RUN/Minion1-RUN3.png" type="Texture" id=6]
+[ext_resource path="res://dungeon/minion1 Animations/RUN/Minion1-RUN4.png" type="Texture" id=7]
+[ext_resource path="res://dungeon/minion1 Animations/RUN/Minion1-RUN8.png" type="Texture" id=8]
+[ext_resource path="res://dungeon/minion1 Animations/RUN/Minion1-RUN7.png" type="Texture" id=9]
+[ext_resource path="res://dungeon/mobscript.gd" type="Script" id=10]
+[ext_resource path="res://dungeon/stats.tscn" type="PackedScene" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+[sub_resource type="CapsuleShape2D" id=3]
+
+[sub_resource type="AnimatedTexture" id=4]
+
+[sub_resource type="AnimatedTexture" id=5]
+
+[node name="mob" type="KinematicBody2D"]
+collision_mask = 0
+script = ExtResource( 10 )
+
+[node name="stats" parent="." instance=ExtResource( 11 )]
+max_health = 3
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1.5, -4 )
+scale = Vector2( 1.11538, 1.5 )
+frames = SubResource( 1 )
+animation = "run"
+frame = 6
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 1 )]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+shape = SubResource( 3 )
+
+[node name="hp bar" type="TextureProgress" parent="."]
+margin_left = -16.0
+margin_top = -24.0
+margin_right = 24.0
+margin_bottom = -16.0
+texture_under = SubResource( 4 )
+texture_progress = SubResource( 5 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="hurtbox"]

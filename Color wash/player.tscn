@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://town/MC.png" type="Texture" id=1]
 [ext_resource path="res://dungeon/Player.gd" type="Script" id=2]
+[ext_resource path="res://dungeon/hurtbox.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
+
+[sub_resource type="CapsuleShape2D" id=2]
 
 [node name="Player" type="KinematicBody2D"]
 rotation = -0.0800971
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = -1.55082
@@ -25,3 +25,12 @@ position = Vector2( -20, -20 )
 
 [node name="right" type="Position2D" parent="left "]
 position = Vector2( 40, 0 )
+
+[node name="hurtbox" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2( -20.0702, -15.0892 )
+shape = SubResource( 2 )
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="hurtbox"]

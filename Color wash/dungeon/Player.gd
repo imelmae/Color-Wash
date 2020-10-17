@@ -24,6 +24,7 @@ func _physics_process(delta):
 		velocity = velocity.clamped(MAX_SPEED)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	
 		
 		
 	velocity = move_and_slide(velocity)
@@ -40,3 +41,9 @@ func SkillLoop():
 		get_parent().add_child(spell_instance)
 		yield(get_tree().create_timer(rate_of_fire),"timeout")
 		can_fire = true
+		
+
+
+
+func _on_hurtbox_area_entered(area):
+	queue_free()
