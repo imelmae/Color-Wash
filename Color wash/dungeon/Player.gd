@@ -22,9 +22,10 @@ func _physics_process(delta):
 	if input_vector != Vector2.ZERO:
 		velocity += input_vector * ACCEL * delta
 		velocity = velocity.clamped(MAX_SPEED)
+		#$AnimatedSprite.animation = "walk"
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	
+		
 		
 		
 	velocity = move_and_slide(velocity)
@@ -41,6 +42,7 @@ func SkillLoop():
 		get_parent().add_child(spell_instance)
 		yield(get_tree().create_timer(rate_of_fire),"timeout")
 		can_fire = true
+		#$AnimatedSprite.animation = "shooting"
 		
 
 

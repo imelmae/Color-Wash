@@ -1,8 +1,37 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://town/MC.png" type="Texture" id=1]
+[ext_resource path="res://town/player amination/STILL/McGhost-STILL1.png" type="Texture" id=1]
 [ext_resource path="res://dungeon/Player.gd" type="Script" id=2]
 [ext_resource path="res://dungeon/hurtbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://town/player amination/STILL/McGhost-STILL2.png" type="Texture" id=4]
+[ext_resource path="res://town/player amination/STILL/McGhost-STILL3.png" type="Texture" id=5]
+[ext_resource path="res://town/player amination/STILL/McGhost-STILL4.png" type="Texture" id=6]
+[ext_resource path="res://town/player amination/STILL/McGhost-STILL5.png" type="Texture" id=7]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT3.png" type="Texture" id=8]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT4.png" type="Texture" id=9]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT6.png" type="Texture" id=10]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT11.png" type="Texture" id=11]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT2.png" type="Texture" id=12]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT7.png" type="Texture" id=13]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT1.png" type="Texture" id=14]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT5.png" type="Texture" id=15]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT12.png" type="Texture" id=16]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT9.png" type="Texture" id=17]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT10.png" type="Texture" id=18]
+[ext_resource path="res://town/player amination/SHOOT/McGhost-SHOOT8.png" type="Texture" id=19]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "shooting",
+"speed": 5.0
+} ]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -12,9 +41,14 @@
 rotation = -0.0800971
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-rotation = -1.55082
-texture = ExtResource( 1 )
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( -19.1941, -17.0905 )
+rotation = -6.27446
+frames = SubResource( 3 )
+animation = "shooting"
+frame = 7
+speed_scale = 5.0
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -20.8831, -14.7996 )
