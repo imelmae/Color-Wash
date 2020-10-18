@@ -542,7 +542,7 @@ position = Vector2( 27.5726, 19.2907 )
 scale = Vector2( 0.85497, 0.584454 )
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 2496, 192, 0, 16 )
+region_rect = Rect2( 349, 59, 2, 9 )
 
 [node name="mob path" type="Path2D" parent="."]
 curve = SubResource( 50 )
