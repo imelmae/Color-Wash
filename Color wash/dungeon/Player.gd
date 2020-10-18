@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-const ACCEL = 700
-const MAX_SPEED = 100
-const FRICTION = 700
+const ACCEL = 800
+const MAX_SPEED = 200
+const FRICTION = 800
 
 var velocity = Vector2.ZERO
 var spell = preload("res://dungeon/Spell.tscn")

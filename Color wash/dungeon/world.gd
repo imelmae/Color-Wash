@@ -1,25 +1,24 @@
 extends Node2D
 
-var mob = preload("res://dungeon/mob.tscn")
+export (PackedScene) var Mob
 
-
-
-
+var score
 
 func _ready():
-	var rand = RandomNumberGenerator.new()
-	var mobscene = load("res://dungeon/mob.tscn")
-	var screen_size = get_viewport().get_visible_rect().size
-	for i in range(0,10):
-		var enemy = mobscene.instance()
-		rand.randomize()
-		var x = rand.randf_range(0,screen_size.x)
-		rand.randomize()
-		var y = rand.randf_range(0,screen_size.y)
-		enemy.position.y = y
-		enemy.position.x = x
-		add_child(enemy)
-		#direction =  get_node("left ").get_global_position()
-		#mob.linear_velocity = Vector2(enemy.position.y, enemy.position.x)
-		#mob.linear_velocity = mob.linear_velocity.rotated(direction)
+	randomize()
 
+
+
+
+
+
+func _on_mobtimer_timeout():
+		# Choose a random location on Path2D.
+	$MobPath/MobSpawnLocation.offset = randi()
+	# Create a Mob instance and add it to the scene.
+	var mob = Mob.instance()
+	add_child(mob)
+	# Set the mob's direction perpendicular to the path direction.
+	var direction = $MobPath/MobSpawnLocation.rotation + PI / 2
+	# Set the mob's position to a random location.
+	mob.position = $MobPath/MobSpawnLocation.positionReplace
